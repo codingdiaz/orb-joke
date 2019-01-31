@@ -1,11 +1,13 @@
 version: 2.1
 jobs:
   validate:
-    executor: circleci/circleci-cli
+    docker:
+      - image: circleci/circleci-cli
     steps:
-      - run: ccircleci orb validate orb.yml
-workflows:
-  version: 2
-  joke:
-    jobs:
-      - validate
+      - run : echo "hello"
+      - run: circleci orb validate orb.yml
+# workflows:
+#   version: 2
+#   joke:
+#     jobs:
+#       - validate
