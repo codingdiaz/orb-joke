@@ -6,8 +6,8 @@ jobs:
     steps:
       - run : echo "hello"
       - run: circleci orb validate orb.yml
-# workflows:
-#   version: 2
-#   joke:
-#     jobs:
-#       - validate
+workflows:
+  version: 2.1
+  validate:
+    jobs:
+      - validate
