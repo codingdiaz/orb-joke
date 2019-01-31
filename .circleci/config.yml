@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/circleci-cli
     steps:
-      - run : echo "hello"
+      - checkout
       - run: circleci orb validate orb.yml
 workflows:
   version: 2.1
