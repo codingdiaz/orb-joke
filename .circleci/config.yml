@@ -1,8 +1,11 @@
 version: 2.1
-orbs:
-  jokes: codingdiaz/jokes@01.0.0
+jobs:
+  validate:
+    executor: circleci/circleci-cli
+    steps:
+      - run: ccircleci orb validate orb.yml
 workflows:
   version: 2
   joke:
     jobs:
-      - jokes/tell-a-joke
+      - validate
