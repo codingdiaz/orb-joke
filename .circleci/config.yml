@@ -1,0 +1,8 @@
+version: 2.1
+orbs:
+  jokes: codingdiaz/jokes@01.0.0
+workflows:
+  version: 2
+  joke:
+    jobs:
+      - jokes/tell-a-joke

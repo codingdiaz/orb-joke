@@ -1,0 +1,31 @@
+version: 2.1
+
+description: |
+  An orb that tells you a joke during CI!
+
+executors:
+  default:
+    description: |
+      The default executor for this orb.
+    docker:
+      - image: codingdiaz/circleci-orb-joke:latest
+commands:
+  tell-a-joke:
+    description: |
+      Have a laugh during CI
+    steps: 
+      - run:
+          name: tell-a-joke
+          shell: /bin/sh -eo pipefail
+          command: |
+            joke=`curl https://official-joke-api.appspot.com/random_joke -s`
+            setup=`echo $joke | jq -r .setup`
+            punchline=`echo $joke | jq -r .punchline`
+            echo $setup
+            echo $punchline
+jobs:
+  tell-a-joke:
+    executor: default
+    steps:
+      - tell-a-joke
+            
